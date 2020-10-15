@@ -8,8 +8,8 @@
 # What is all this?
 
 * Access RAM directly
-* Target can not restrict access
 * Target does not know about access
+* Target can not restrict access
 
 ---
 
