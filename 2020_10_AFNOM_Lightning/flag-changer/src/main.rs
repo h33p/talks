@@ -1,5 +1,5 @@
-use std::io::{self, BufRead, BufReader, Read, Write, Seek, SeekFrom};
-use std::fs::{OpenOptions, File};
+use std::fs::{File, OpenOptions};
+use std::io::{self, BufRead, BufReader, Read, Seek, SeekFrom, Write};
 
 fn main() -> io::Result<()> {
     let stdin = io::stdin();
@@ -23,8 +23,14 @@ fn main() -> io::Result<()> {
             if let Some((page_off, _)) = page
                 .windows(target.len())
                 .enumerate()
-                .find(|(_, b)| b == target) {
-                println!("FOUND AT {:x} + {:x} = {:x}", offset, page_off, offset + page_off);
+                .find(|(_, b)| b == target)
+            {
+                println!(
+                    "FOUND AT {:x} + {:x} = {:x}",
+                    offset,
+                    page_off,
+                    offset + page_off
+                );
                 write_offsets.push(offset + page_off);
             }
             offset += page.len();
@@ -37,6 +43,6 @@ fn main() -> io::Result<()> {
             file.write(replacement)?;
         }
     }
-    
+
     Ok(())
 }

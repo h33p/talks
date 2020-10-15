@@ -9,6 +9,6 @@ fn main() {
     loop {
         println!("Flag: {}", flag);
         let mut reader = io::stdin();
-        reader.read(&mut [0;10]).unwrap();
+        reader.read(&mut [0; 10]).unwrap();
     }
 }

@@ -13,16 +13,6 @@
 
 ---
 
-# Ways to do DMA
-
-* PCILeech
-* VMs (QEMU/KVM, VBox, etc.)
-* Local access (/dev/mem, MmMapIOSpace, WinDBG)
-
-![](resources/screamer-m2.png)
-
----
-
 # But why?
 
 ---
@@ -44,6 +34,16 @@
 * Monitoring viruses
 * Viruses
 * Other 4D chess moves
+
+---
+
+# Ways to do DMA
+
+* PCILeech
+* VMs (QEMU/KVM, VBox, etc.)
+* Local access (/dev/mem, MmMapIOSpace, WinDBG)
+
+![](resources/screamer-m2.png)
 
 ---
 
