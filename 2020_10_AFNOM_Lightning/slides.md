@@ -4,6 +4,7 @@
 ## Or why you should totally let me plug a device in your PCIe slot
 
 By Auri/h33p
+github.com/h33p/dma\_talks
 
 ---
 
