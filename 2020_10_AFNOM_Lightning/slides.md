@@ -3,6 +3,8 @@
 # A journey through DMA
 ## Or why you should totally let me plug a device in your PCIe slot
 
+By Auri/h33p
+
 ---
 
 # What is all this?
