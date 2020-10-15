@@ -1,3 +1,5 @@
+<!-- class: invert -->
+
 # A journey through DMA
 ## Or why you should totally let me plug a device in your PCIe slot
 
@@ -17,19 +19,35 @@
 * VMs (QEMU/KVM, VBox, etc.)
 * Local access (/dev/mem, MmMapIOSpace, WinDBG)
 
+![](resources/screamer-m2.png)
+
 ---
 
 # But why?
 
-* Game hacking
-* Monitoring viruses
-* Viruses
-* Espionage
-* And other 4D chess moves
+---
+
+## Game hacking
+
+![](resources/csgo-dma-glow.webp)
 
 ---
 
-# Example 1: Changing a flag
+## Espionage
+
+![](resources/extract-credentials.webp)
+
+---
+
+## And more
+
+* Monitoring viruses
+* Viruses
+* Other 4D chess moves
+
+---
+
+# Exhibit A: Changing a flag
 
 ---
 
@@ -43,21 +61,56 @@
 
 # Virtual memory
 
-* Is not mapped 1-to-1 with physical RAM. It is shuffled
+* Not mapped 1-to-1
 * 4Kb per "page"
 * 256TB of addressible memory per process
 * We don't have 256TB of memory... Yet...
-* Somehow we need to mark which memory exists, and where each region points
 
 ---
 
-# Page tables
+# Address translation
 
-* Builds a nice tree structure
-* Each node holds 512 entries (512 * 64-bit = 4Kb)
-* Each entry can either be present or not
-* Present entries point to another node, down the tree
-* Page table tree has 4 levels
+* Example - 0xa3c1a00596
+* Binary - 0b1010001111000001101000000000010110010110
+* Split it into 5 parts sized \[9\] \[9\] \[9\] \[9\] \[12\]
+  * \[1\] \[010001111\] \[000001101\] \[000000000\] \[010110010110\]
+  * Decimal - \[1\] \[143\] \[13\] \[0\] \[1430\]
+
+---
+
+![bg contain](resources/page-tables-1.png)
+
+---
+
+![bg contain](resources/page-tables-2.png)
+
+---
+
+![bg contain](resources/page-tables-3.png)
+
+---
+
+![bg contain](resources/page-tables-4.png)
+
+---
+
+![bg contain](resources/page-tables-5.png)
+
+---
+
+![bg contain](resources/page-tables-6.png)
+
+---
+
+![bg contain](resources/page-tables-7.png)
+
+---
+
+![bg contain](resources/page-tables-8.png)
+
+---
+
+![bg contain](resources/page-tables-9.png)
 
 ---
 
@@ -75,19 +128,29 @@
 
 # Let's find out where the hell Windows is!
 
-* Find Windows bootloader (in the smallest 16MB of RAM)
-* Grab a pointer within it. It has an address to Windows kernel page table, and kernel entry point.
-* Find the start of Windows kernel
+---
+
+![bg contain](resources/windows-finding-1.png)
 
 ---
 
-# Dumping a process?
+![bg contain](resources/windows-finding-2.png)
 
-## almost there!
+---
 
-* Find the process list
-* Find the process in the list
-* Voila!
+![bg contain](resources/windows-finding-3.png)
+
+---
+
+![bg contain](resources/windows-finding-4.png)
+
+---
+
+![bg contain](resources/windows-finding-5.png)
+
+---
+
+# Voila!
 
 ---
 
@@ -99,7 +162,7 @@
 
 ---
 
-# Example 2: Dumping login passwords
+# Exhibit B: Dumping login passwords
 
 ---
 
